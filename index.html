@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Yosana Gamage Portfolio</title>
+  <style>
+    /* Basic Reset */
+    * {
+      margin: 0; padding: 0; box-sizing: border-box;
+    }
+
+    body {
+      background-color: #000000;
+      color: #eee;
+      font-family: 'Poppins', sans-serif;
+      scroll-behavior: smooth;
+    }
+
+    header {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      background: rgba(0,0,0,0.8);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      z-index: 1000;
+      border-bottom: 2px solid #E10600;
+    }
+
+    header h1 {
+      color: #E10600;
+      font-weight: 700;
+      font-size: 1.5rem;
+      letter-spacing: 2px;
+    }
+
+    nav a {
+      color: #eee;
+      margin-left: 2rem;
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: #E10600;
+    }
+
+    section {
+      min-height: 100vh;
+      padding: 6rem 2rem 4rem;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    h2 {
+      color: #E10600;
+      margin-bottom: 1rem;
+      font-weight: 700;
+      font-size: 2rem;
+      border-bottom: 2px solid #E10600;
+      padding-bottom: 0.5rem;
+    }
+
+    p {
+      line-height: 1.6;
+      margin-bottom: 2rem;
+    }
+
+    /* Hero Section */
+    #hero {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding-top: 8rem;
+    }
+
+    #hero h1 {
+      font-size: 3rem;
+      color: #E10600;
+      margin-bottom: 1rem;
+      letter-spacing: 4px;
+    }
+
+    #hero p {
+      font-size: 1.3rem;
+      color: #ccc;
+      margin-bottom: 2rem;
+    }
+
+    #hero a {
+      background-color: #E10600;
+      color: #fff;
+      padding: 1rem 2rem;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: background-color 0.3s;
+    }
+
+    #hero a:hover {
+      background-color: #b20400;
+    }
+
+    /* Portfolio Grid */
+    #portfolio .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
+      gap: 1.5rem;
+    }
+
+    .project {
+      background-color: #111;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 0 10px #E10600;
+      transition: transform 0.3s;
+    }
+
+    .project:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 15px #FF3B3B;
+    }
+
+    .project img {
+      width: 100%;
+      display: block;
+    }
+
+    .project-info {
+      padding: 1rem;
+      color: #eee;
+    }
+
+    .project-info h3 {
+      margin-bottom: 0.5rem;
+      color: #E10600;
+    }
+
+    /* Services List */
+    #services ul {
+      list-style-type: none;
+      color: #eee;
+    }
+
+    #services li {
+      margin-bottom: 1rem;
+      font-size: 1.2rem;
+      position: relative;
+      padding-left: 1.5rem;
+    }
+
+    #services li::before {
+      content: '★';
+      position: absolute;
+      left: 0;
+      color: #E10600;
+    }
+
+    /* Contact Form */
+    #contact form {
+      display: flex;
+      flex-direction: column;
+    }
+
+    #contact label {
+      margin-bottom: 0.5rem;
+      font-weight: 600;
+      color: #E10600;
+    }
+
+    #contact input, #contact textarea {
+      margin-bottom: 1rem;
+      padding: 0.8rem;
+      border: none;
+      border-radius: 6px;
+      font-size: 1rem;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    #contact button {
+      background-color: #E10600;
+      color: #fff;
+      padding: 1rem;
+      border: none;
+      border-radius: 30px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    #contact button:hover {
+      background-color: #b20400;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 1rem 0;
+      color: #555;
+      font-size: 0.9rem;
+      margin-top: 2rem;
+    }
+
+    /* Responsive */
+    @media(max-width:600px) {
+      #hero h1 {
+        font-size: 2rem;
+      }
+
+      nav a {
+        margin-left: 1rem;
+      }
+    }
+
+    /* Animation for social reveal */
+    @keyframes fadeInUp {
+      0% {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    #social-info {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      animation: fadeInUp 0.8s ease-out forwards;
+    }
+
+    #social-info img {
+      width: 150px;
+      height: 150px;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 3px solid #E10600;
+      box-shadow: 0 0 20px #E10600;
+      margin-bottom: 1rem;
+    }
+
+    #social-icons {
+      display: flex;
+      gap: 1.5rem;
+      margin-top: 1rem;
+    }
+
+    #social-icons a {
+      color: #eee;
+      font-size: 1.8rem;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    #social-icons a:hover {
+      color: #E10600;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Yosana Gamage</h1>
+    <nav>
+      <a href="#hero">Home</a>
+      <a href="#about">About</a>
+      <a href="#portfolio">Portfolio</a>
+      <a href="#services">Services</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <section id="hero">
+    <h1>Creative Graphic Designer</h1>
+    <p>Crafting modern designs with passion and precision.</p>
+    <a href="#portfolio">View Portfolio</a>
+  </section>
+
+  <section id="about">
+    <h2>About Me</h2>
+    <p>Hi, I'm Yosana Gamage, a passionate graphic designer specializing in modern and minimalist design. I bring your ideas to life with clean and creative visuals.</p>
+  </section>
+
+  <section id="portfolio">
+    <h2>Portfolio</h2>
+    <div class="grid">
+      <div class="project">
+        <img src="https://via.placeholder.com/400x250?text=Project+1" alt="Project 1" />
+        <div class="project-info">
+          <h3>Project One</h3>
+          <p>Logo design for a tech startup.</p>
+        </div>
+      </div>
+      <div class="project">
+        <img src="https://via.placeholder.com/400x250?text=Project+2" alt="Project 2" />
+        <div class="project-info">
+          <h3>Project Two</h3>
+          <p>Branding and identity design.</p>
+        </div>
+      </div>
+      <div class="project">
+        <img src="https://via.placeholder.com/400x250?text=Project+3" alt="Project 3" />
+        <div class="project-info">
+          <h3>Project Three</h3>
+          <p>Social media graphics creation.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="services">
+    <h2>Services</h2>
+    <ul>
+      <li>Logo Design</li>
+      <li>Branding & Identity</li>
+      <li>Social Media Graphics</li>
+    </ul>
+  </section>
+
+  <section id="contact">
+    <h2>Contact Me</h2>
+    <form>
+      <label for="name">Name</label>
+      <input id="name" type="text" required />
+      <label for="email">Email</label>
+      <input id="email" type="email" required />
+      <label for="message">Message</label>
+      <textarea id="message" rows="5" required></textarea>
+      <button type="submit">Send</button>
+    </form>
+  </section>
+
+  <!-- Contact CTA Button & Social Reveal -->
+  <section id="contact-cta" style="text-align: center; margin-top: 2rem;">
+    <button onclick="showSocials()" style="background-color: #E10600; color: #fff; padding: 1rem 2rem; border: none; border-radius: 30px; font-weight: bold; cursor: pointer; font-size: 1.1rem;">
+      Contact Me
+    </button>
+
+    <div id="social-info">
+      <img src="/mnt/data/e1709d55-0266-4115-bc5a-40ba26d34421.jpg" alt="Yosana" />
+      <div id="social-icons">
+        <a href="https://facebook.com/yggraphics.lk" target="_blank" title="Facebook">📘</a>
+        <a href="https://instagram.com/yggraphics.lk" target="_blank" title="Instagram">📸</a>
+        <a href="https://behance.net/yggraphics" target="_blank" title="Behance">🎨</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2025 Yosana Gamage. All rights reserved.</p>
+  </footer>
+
+  <script>
+    function showSocials() {
+      const socials = document.getElementById('social-info');
+      socials.style.display = 'flex';
+    }
+  </script>
+</body>
+</html>
